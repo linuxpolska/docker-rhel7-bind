@@ -3,7 +3,7 @@ docker-rhel7-bind
 
 docker-rhel7-bind
 
-Instalation
+Instalation docker on RedHat EL 7
 
 # subscription-manager register --username=rhnuser --password=rhnpasswd
 # subscription-manager list --available  Find pool ID for RHEL subscription
@@ -19,4 +19,4 @@ And if you want local registyr
 
 Pull images from Red Hat Repository 
 
-# docker pull registry.access.redhat.com/rhel
+# docker pull registry.access.redhat.com/rhel7
