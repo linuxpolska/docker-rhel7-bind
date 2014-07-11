@@ -22,6 +22,6 @@ yum install docker-registry
 Pull images from Red Hat Repository 
 
 ```
-docker pull registry.access.redhat.com/rhel7
+docker pull registry.access.redhat.com/rhel
 ```
 ...

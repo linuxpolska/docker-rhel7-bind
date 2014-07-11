@@ -1,0 +1,26 @@
+#!/bin/sh
+
+
+for ARG in $@;do
+    if [ "-c" = "$ARG" ]; then
+	SELF_CONFIG=1
+    fi
+done
+
+# Copy default config
+if [ ! -d /opt/data/etc ]; then
+    echo "Create default configuration ..."
+    cp -fr /opt/named.backup/* /opt/data
+    chown -R named:named /opt/data
+
+    /usr/sbin/rndc-confgen -a -c /opt/data/etc/rndc.key
+    chmod 640 /etc/rndc.key
+    chown root.named /etc/rndc.key
+fi
+
+if [ -z "$SELF_CONFIG" ] && [ ! -r "/etc/named.conf" ]; then
+    echo "File /etc/named.conf can't be read. Check file perimission or disable SELinux."
+    exit 0
+fi
+
+/usr/sbin/named $@
