@@ -37,6 +37,12 @@ git clone https://github.com/linuxpolska/docker-rhel7-bind.git docker-rhel7-bind
 ```
 Script `docker-bind-build.sh` will build the `inuxpolska/docker-rhel7-bind` image. 
 
+Don't forget to add service account  called "named".
+```
+/usr/sbin/groupadd -g 25 -f -r named
+/usr/sbin/useradd  -u 25 -r -N -M -g named -s /sbin/nologin -d /var/named -c Named named
+```
+
 # Quick Start
 To quick start run
 ```
